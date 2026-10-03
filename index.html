@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpamShield — Email Spam Classifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <div class="brand-name">SpamShield</div>
+        <div class="brand-sub">NLP CLASSIFIER</div>
+      </div>
+    </div>
+    <div class="model-pill">
+      <span class="pulse"></span>
+      TF-IDF + MultinomialNB
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">EMAIL THREAT DETECTION</div>
+      <h1>Is this email <span>spam?</span></h1>
+      <p class="hero-copy">
+        Paste an email or SMS below. The classifier preprocesses the text,
+        converts it with TF-IDF, and uses your final Multinomial Naive Bayes model.
+      </p>
+    </section>
+
+    <section class="classifier-card">
+      <div class="card-top">
+        <div>
+          <span class="section-label">MESSAGE ANALYZER</span>
+          <h2>Analyze a message</h2>
+        </div>
+        <button class="clear-btn" id="clearBtn">Clear</button>
+      </div>
+
+      <textarea id="message"
+        placeholder="Paste your email or message here...
+
+Example:
+Congratulations! You have won a free prize. Click here to claim your reward now!"></textarea>
+
+      <div class="examples">
+        <span>Try an example:</span>
+        <button class="example-btn" data-example="Congratulations! You have won a free prize. Click here to claim your reward now!">Spam</button>
+        <button class="example-btn" data-example="Hey, are we still meeting tomorrow at 4? Let me know when you get here.">Not spam</button>
+      </div>
+
+      <button class="analyze-btn" id="analyzeBtn">
+        <span>Analyze message</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <div class="loading" id="loading">
+        <div class="loader"></div>
+        <span>Running NLP pipeline...</span>
+      </div>
+
+      <div class="result" id="result">
+        <div class="result-icon" id="resultIcon"></div>
+        <div class="result-content">
+          <div class="result-label" id="resultLabel"></div>
+          <div class="result-title" id="resultTitle"></div>
+          <div class="result-meta" id="resultMeta"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pipeline">
+      <div class="section-heading">
+        <span class="section-label">MODEL PIPELINE</span>
+        <h2>From words to prediction</h2>
+      </div>
+
+      <div class="pipeline-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Preprocess</h3>
+          <p>Lowercase, tokenize, remove non-alphanumeric tokens and stopwords, then apply Porter stemming.</p>
+        </div>
+        <div class="connector"></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>TF-IDF</h3>
+          <p>Convert the processed message into a numerical feature vector using up to 3,000 features.</p>
+        </div>
+        <div class="connector"></div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>MultinomialNB</h3>
+          <p>Estimate the probability of spam versus not spam from the learned word-feature distributions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <strong>97.10%</strong>
+        <span>Test accuracy</span>
+      </div>
+      <div class="stat">
+        <strong>100%</strong>
+        <span>Test precision</span>
+      </div>
+      <div class="stat">
+        <strong>3,000</strong>
+        <span>TF-IDF max features</span>
+      </div>
+      <div class="stat">
+        <strong>NB</strong>
+        <span>Multinomial classifier</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>SpamShield</span>
+    <span>TF-IDF + Multinomial Naive Bayes</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
