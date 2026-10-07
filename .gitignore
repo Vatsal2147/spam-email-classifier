@@ -5,7 +5,6 @@ __pycache__/
 venv/
 
 # Trained model
-spam_model.pkl
 
 # Dataset
 spam.csv
