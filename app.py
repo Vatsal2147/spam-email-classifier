@@ -3,7 +3,7 @@ import pickle
 from flask import Flask, jsonify, request, send_from_directory
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "spam_model.pkl"
+MODEL_PATH = Path("/etc/secrets/spam_model.pkl")
 
 app = Flask(__name__, static_folder=".", static_url_path="")
 
@@ -46,4 +46,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
