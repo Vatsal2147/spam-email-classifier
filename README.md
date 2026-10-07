@@ -4,6 +4,10 @@ A web interface for the final spam-classification approach from the notebook:
 
 **NLP preprocessing → TF-IDF (`max_features=3000`) → Multinomial Naive Bayes**
 
+# Live Website Demo 
+
+https://spam-email-calssifier.onrender.com/
+
 The notebook's reported test result for this configuration was approximately:
 
 - Accuracy: **97.10%**
